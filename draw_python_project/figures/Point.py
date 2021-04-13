@@ -20,3 +20,4 @@ class Point:
         y1 = self.y
         y2 = point.y
         return math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2))
+

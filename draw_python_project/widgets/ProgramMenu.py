@@ -1,5 +1,5 @@
 from tkinter import *
-from figures.figure_manager import FigureManager
+from draw_python_project.managers.figure_manager import FigureManager
 
 
 class ProgramMenu(Menu):

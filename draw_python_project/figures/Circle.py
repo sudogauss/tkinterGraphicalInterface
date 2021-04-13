@@ -1,4 +1,5 @@
 from math import pi
+from draw_python_project.figures.Point import Point
 
 
 class Circle:
@@ -25,3 +26,8 @@ class Circle:
 
     def set_radius(self, radius):
         self.r = radius
+
+    def distance(self, point):
+        x, y = self.get_center()
+        center = Point(x, y)
+        return max(0, point.distance(center)-self.get_radius())

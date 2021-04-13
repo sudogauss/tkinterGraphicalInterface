@@ -1,7 +1,5 @@
-from tkinter import *
-from painter import Painter
-from figures.Point import Point
-from figures.figure_manager import FigureManager
+from draw_python_project.figures.Point import Point
+from draw_python_project.managers.figure_manager import FigureManager
 
 
 class PointInteractHandlers:
