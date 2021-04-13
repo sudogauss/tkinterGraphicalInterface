@@ -15,6 +15,7 @@ class GUI(Tk):
         draw_listener_manager = DrawListenersManager()
         draw_listener_manager.set_painter(self.painter)
         draw_listener_manager.register_draw_listeners()
+        draw_listener_manager.register_draw_key_listeners(self)
 
     def create_menu(self):
         menu = ProgramMenu(self)

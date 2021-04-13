@@ -26,17 +26,25 @@ class Painter:
 
     def draw_point(self, point, r):
         center_x, center_y = point.get_coordinates()
-        self.canvas.create_oval(center_x - r, center_y - r, center_x + r, center_y + r, fill="red")
+        canvas_point = self.canvas.create_oval(center_x - r, center_y - r, center_x + r, center_y + r, fill="red")
         FigureManager.add_figure(point)
+        point.set_canvas_object(canvas_point)
 
     def draw_circle(self, circle):
         center_x, center_y = circle.get_center()
         r = circle.get_radius()
-        self.canvas.create_oval(center_x - r, center_y - r, center_x + r, center_y + r, fill="blue")
+        canvas_circle = self.canvas.create_oval(center_x - r, center_y - r, center_x + r, center_y + r, fill="blue")
         FigureManager.add_figure(circle)
+        circle.set_canvas_object(canvas_circle)
 
     def remove(self, x, y):
         figure_id = self.canvas.find_closest(x, y)
         if figure_id[0] > 152:
             if FigureManager.remove_figure(figure_id[0], x, y):
                 self.canvas.delete(figure_id[0])
+
+    def move(self, canvas_object, x, y):
+        self.canvas.move(canvas_object, x, y)
+
+    def get_figure_id(self, x, y):
+        return self.canvas.find_closest(x, y)[0]
