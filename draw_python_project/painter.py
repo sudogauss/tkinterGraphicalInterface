@@ -19,7 +19,7 @@ class Painter:
         for i in range(0, 700, 10):
             self.canvas.create_line(0, i, 800, i, width=0.2)
 
-        self.canvas.grid(padx=1, pady=1, row=1, column=0, sticky=W + E + N + S, columnspan=6, rowspan=20)
+        self.canvas.pack(side=LEFT)
 
         self.canvas.create_line(400, 700, 400, 0, width=2, arrow=LAST)
         self.canvas.create_line(0, 350, 800, 350, width=2, arrow=LAST)
