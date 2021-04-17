@@ -7,6 +7,7 @@ class FigureManager:
     figures = []
     index = 153
     moving_figure = None
+    modified_figure = None
 
     @classmethod
     def set_figure_point(cls):
@@ -78,3 +79,11 @@ class FigureManager:
     @classmethod
     def stop_moving_figure(cls):
         cls.moving_figure = None
+
+    @classmethod
+    def set_modified_figure(cls, figure):
+        cls.modified_figure = figure
+
+    @classmethod
+    def stop_modification(cls):
+        cls.modified_figure = None

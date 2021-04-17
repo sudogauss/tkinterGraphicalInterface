@@ -43,6 +43,9 @@ class Painter:
             if FigureManager.remove_figure(figure_id[0], x, y):
                 self.canvas.delete(figure_id[0])
 
+    def remove_by_id(self, figure_id):
+        self.canvas.delete(figure_id)
+
     def move(self, canvas_object, x, y):
         self.canvas.move(canvas_object, x, y)
 
