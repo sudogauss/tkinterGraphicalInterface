@@ -1,5 +1,5 @@
-from draw_python_project.figures.Circle import Circle
-from draw_python_project.managers.figure_manager import FigureManager
+from figures.Circle import Circle
+from managers.figure_manager import FigureManager
 
 
 class CircleInteractHandlers:

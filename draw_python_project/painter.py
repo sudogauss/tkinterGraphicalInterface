@@ -1,6 +1,6 @@
 from tkinter import *
 from figures.Point import Point
-from draw_python_project.managers.figure_manager import FigureManager
+from managers.figure_manager import FigureManager
 
 
 class Painter:
@@ -36,6 +36,14 @@ class Painter:
         canvas_circle = self.canvas.create_oval(center_x - r, center_y - r, center_x + r, center_y + r, fill="blue")
         FigureManager.add_figure(circle)
         circle.set_canvas_object(canvas_circle)
+
+    def draw_triangle(self, triangle):
+        x1, y1 = triangle.vertex1.x, triangle.vertex1.y
+        x2, y2 = triangle.vertex2.x, triangle.vertex2.y
+        x3, y3 = triangle.vertex3.x, triangle.vertex3.y
+        canvas_triangle = self.canvas.create_polygon([x1, y1, x2, y2, x3, y3], fill="black")
+        FigureManager.add_figure(triangle)
+        triangle.set_canvas_object(canvas_triangle)
 
     def remove(self, x, y):
         figure_id = self.canvas.find_closest(x, y)

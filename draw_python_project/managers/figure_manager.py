@@ -1,4 +1,4 @@
-from draw_python_project.figures.Point import Point
+from figures.Point import Point
 
 
 class FigureManager:

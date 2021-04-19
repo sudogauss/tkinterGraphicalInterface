@@ -1,8 +1,9 @@
-from draw_python_project.listeners.draw_listeners.point_intercat_handlers import PointInteractHandlers
-from draw_python_project.listeners.draw_listeners.circle_interact_handlers import CircleInteractHandlers
-from draw_python_project.managers.figure_manager import FigureManager
-from draw_python_project.figures.Point import Point
-from draw_python_project.figures.Circle import Circle
+from listeners.draw_listeners.point_intercat_handlers import PointInteractHandlers
+from listeners.draw_listeners.circle_interact_handlers import CircleInteractHandlers
+from listeners.draw_listeners.triangle_interact_handlers import TriangleInteractHandlers
+from managers.figure_manager import FigureManager
+from figures.Point import Point
+from figures.Circle import Circle
 
 
 class DrawListenersManager:
@@ -10,6 +11,7 @@ class DrawListenersManager:
     painter = None
     point_interact_handlers = None
     circle_interact_handlers = None
+    triangle_interact_handlers = None
     shift_pressed = False
     ctrl_pressed = False
 
@@ -18,6 +20,7 @@ class DrawListenersManager:
         cls.painter = painter
         cls.point_interact_handlers = PointInteractHandlers(painter)
         cls.circle_interact_handlers = CircleInteractHandlers(painter)
+        cls.triangle_interact_handlers = TriangleInteractHandlers(painter)
 
     def register_draw_listeners(self):
         self.painter.canvas.bind('<Button-1>', self.create_handler)
@@ -35,6 +38,7 @@ class DrawListenersManager:
         x, y = event.x, event.y
         self.point_interact_handlers.create_point_handler(x, y)
         self.circle_interact_handlers.create_circle_handler(x, y)
+        self.triangle_interact_handlers.create_triangle_handler(x, y)
 
     def delete_handler(self, event):
         x, y = event.x, event.y

@@ -1,5 +1,5 @@
-from draw_python_project.figures.Point import Point
-from draw_python_project.managers.figure_manager import FigureManager
+from figures.Point import Point
+from managers.figure_manager import FigureManager
 
 
 class PointInteractHandlers:

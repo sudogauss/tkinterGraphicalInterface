@@ -1,9 +1,9 @@
 from tkinter import *
 from painter import Painter
 from listeners.draw_listeners.draw_listeners_manager import DrawListenersManager
-from draw_python_project.listeners.interface_listeners.interface_listener_manager import InterfaceListenerManager
+from listeners.interface_listeners.interface_listener_manager import InterfaceListenerManager
 from widgets.ProgramMenu import ProgramMenu
-from draw_python_project.widgets.StyleMenu import StyleMenu
+from widgets.StyleMenu import StyleMenu
 
 
 class GUI(Tk):
