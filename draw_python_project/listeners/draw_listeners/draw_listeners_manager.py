@@ -14,6 +14,7 @@ class DrawListenersManager:
     triangle_interact_handlers = None
     shift_pressed = False
     ctrl_pressed = False
+    figure_menu = None
 
     @classmethod
     def set_painter(cls, painter):
@@ -21,6 +22,10 @@ class DrawListenersManager:
         cls.point_interact_handlers = PointInteractHandlers(painter)
         cls.circle_interact_handlers = CircleInteractHandlers(painter)
         cls.triangle_interact_handlers = TriangleInteractHandlers(painter)
+
+    @classmethod
+    def set_figure_menu(cls, figure_menu):
+        cls.figure_menu = figure_menu
 
     def register_draw_listeners(self):
         self.painter.canvas.bind('<Button-1>', self.create_handler)
@@ -39,6 +44,7 @@ class DrawListenersManager:
         self.point_interact_handlers.create_point_handler(x, y)
         self.circle_interact_handlers.create_circle_handler(x, y)
         self.triangle_interact_handlers.create_triangle_handler(x, y)
+        self.figure_menu.update()
 
     def delete_handler(self, event):
         x, y = event.x, event.y
@@ -53,10 +59,12 @@ class DrawListenersManager:
                 if figure is None:
                     return
                 FigureManager.set_moving_figure(figure)
+                FigureManager.set_menu_figure(figure)
             else:
                 figure_x, figure_y = FigureManager.moving_figure.get_coordinates()
                 self.painter.move(FigureManager.moving_figure.canvas_object, x - figure_x, y - figure_y)
                 FigureManager.moving_figure.set_coordinates(x, y)
+                self.figure_menu.update()
         elif self.ctrl_pressed:
             x, y = event.x, event.y
             if FigureManager.modified_figure is None:

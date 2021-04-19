@@ -8,6 +8,7 @@ class FigureManager:
     index = 153
     moving_figure = None
     modified_figure = None
+    menu_figure = None
 
     @classmethod
     def set_figure_point(cls):
@@ -68,6 +69,9 @@ class FigureManager:
         point = Point(x, y)
 
         if figure.distance(point) <= 3:
+            if FigureManager.menu_figure is not None:
+                if figure.canvas_object == FigureManager.menu_figure.canvas_object:
+                    FigureManager.menu_figure = None
             cls.figures.pop(figure_index)
             return True
         return False
@@ -87,3 +91,7 @@ class FigureManager:
     @classmethod
     def stop_modification(cls):
         cls.modified_figure = None
+
+    @classmethod
+    def set_menu_figure(cls, figure):
+        cls.menu_figure = figure
