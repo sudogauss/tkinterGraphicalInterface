@@ -5,6 +5,7 @@ class InterfaceListenerManager:
 
     painter = None
     style_menu = None
+    figure_menu = None
 
     @classmethod
     def set_painter(cls, painter):

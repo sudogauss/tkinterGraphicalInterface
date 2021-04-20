@@ -11,6 +11,8 @@ class FigureMenu:
     def __init__(self, root):
         self.frame = Frame(root).pack(side=RIGHT)
 
+        self.painter = root.painter
+
         self.name = StringVar()
         self.coors = StringVar()
 
@@ -35,6 +37,8 @@ class FigureMenu:
         self.label_x3 = Label(self.frame, text="x3")
         self.label_y3 = Label(self.frame, text="y3")
         self.label_r = Label(self.frame, text="r")
+        self.change_position_button = Button(self.frame, text="change position", command=self.change_position)
+        self.change_size_button = Button(self.frame, text="change size", command=self.change_size)
 
         self.label_name.pack(pady=5)
         self.label_coors.pack(pady=5)
@@ -69,6 +73,8 @@ class FigureMenu:
             math_x = x - 400.0
             math_y = 350.0 - y
             self.coors.set("x: " + str(math_x) + ",y: " + str(math_y))
+            self.change_position_button.pack(pady=4)
+            self.change_size_button.pack(pady=3)
         elif isinstance(FigureManager.menu_figure, Circle):
             self.name.set("Circle")
             x, y = FigureManager.menu_figure.get_coordinates()
@@ -80,6 +86,8 @@ class FigureMenu:
             s = math.pi * r * r
             self.label_r.pack()
             self.entry_r.pack()
+            self.change_position_button.pack(pady=4)
+            self.change_size_button.pack(pady=3)
             self.perimeter.set("perimeter: " + str(p))
             self.area.set("area: " + str(s))
             self.perimeter_label.pack(pady=4)
@@ -106,6 +114,9 @@ class FigureMenu:
 
             self.label_y3.pack()
             self.entry_y3.pack()
+
+            self.change_position_button.pack(pady=4)
+            self.change_size_button.pack(pady=3)
             p = FigureManager.menu_figure.vertex1.distance(FigureManager.menu_figure.vertex2) + \
                 FigureManager.menu_figure.vertex1.distance(FigureManager.menu_figure.vertex3) + \
                 FigureManager.menu_figure.vertex2.distance(FigureManager.menu_figure.vertex3)
@@ -118,6 +129,8 @@ class FigureMenu:
     def forget_pack(self):
         self.perimeter_label.pack_forget()
         self.area_label.pack_forget()
+        self.change_position_button.pack_forget()
+        self.change_size_button.pack_forget()
         self.label_x2.pack_forget()
         self.label_y2.pack_forget()
         self.label_x3.pack_forget()
@@ -128,6 +141,19 @@ class FigureMenu:
         self.entry_y2.pack_forget()
         self.entry_x3.pack_forget()
         self.entry_y3.pack_forget()
+
+    def change_position(self):
+        if isinstance(FigureManager.menu_figure, Point):
+            str_x, str_y = self.x.get(), self.y.get()
+            if str_x != '' and str_y != '':
+                x, y = int(str_x), int(str_y)
+                figure_x, figure_y = FigureManager.menu_figure.get_coordinates()
+                self.painter.move(FigureManager.menu_figure.canvas_object, (-figure_x + x + 400), (-figure_y + 350 - y))
+                FigureManager.menu_figure.set_coordinates(x + 400, 350 - y)
+                self.update()
+
+    def change_size(self):
+        print("Ok")
 
 
 
