@@ -4,6 +4,7 @@ from listeners.draw_listeners.triangle_interact_handlers import TriangleInteract
 from managers.figure_manager import FigureManager
 from figures.Point import Point
 from figures.Circle import Circle
+from figures.Triangle import Triangle
 
 
 class DrawListenersManager:
@@ -72,7 +73,7 @@ class DrawListenersManager:
                 figure = FigureManager.find_figure(figure_id, x, y)
                 if figure is None or isinstance(figure, Point):
                     return
-                FigureManager.set_modified_figure(figure)
+                FigureManager.set_modified_figure(figure, x, y)
 
     def press(self, event):
         if event.keysym == "Shift_L":
@@ -99,4 +100,14 @@ class DrawListenersManager:
             center_point = Point(center_x, center_y)
             modified_circle = Circle(center_x, center_y, point.distance(center_point))
             self.painter.draw_circle(modified_circle)
+            FigureManager.set_menu_figure(modified_circle)
+        if isinstance(FigureManager.modified_figure, Triangle):
+            self.painter.remove_by_id(FigureManager.modified_figure.canvas_object)
+            all_coors = FigureManager.modified_figure.get_all_coordinates()
+            all_coors[2*FigureManager.n_vertex_modification - 2] = x
+            all_coors[2*FigureManager.n_vertex_modification - 1] = y
+            modified_triangle = Triangle(all_coors[0], all_coors[1], all_coors[2], all_coors[3], all_coors[4], all_coors[5])
+            self.painter.draw_triangle(modified_triangle)
+            FigureManager.set_menu_figure(modified_triangle)
+        self.figure_menu.update()
         FigureManager.stop_modification()

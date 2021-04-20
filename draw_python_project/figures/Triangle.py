@@ -1,6 +1,7 @@
 from figures.Point import Point
 import math
 
+
 class Triangle:
 
     def __init__(self, peak1_x, peak1_y, peak2_x, peak2_y, peak3_x, peak3_y):
@@ -30,6 +31,9 @@ class Triangle:
 
     def get_coordinates(self):
         return self.vertex1.x, self.vertex1.y
+
+    def get_all_coordinates(self):
+        return [self.vertex1.x, self.vertex1.y, self.vertex2.x, self.vertex2.y, self.vertex3.x, self.vertex3.y]
 
     def set_coordinates(self, x, y):
         x1, y1 = self.vertex1.x, self.vertex1.y

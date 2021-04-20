@@ -1,4 +1,5 @@
 from figures.Point import Point
+from figures.Triangle import Triangle
 
 
 class FigureManager:
@@ -9,6 +10,7 @@ class FigureManager:
     moving_figure = None
     modified_figure = None
     menu_figure = None
+    n_vertex_modification = 0
 
     @classmethod
     def set_figure_point(cls):
@@ -85,12 +87,23 @@ class FigureManager:
         cls.moving_figure = None
 
     @classmethod
-    def set_modified_figure(cls, figure):
+    def set_modified_figure(cls, figure, x=0, y=0):
         cls.modified_figure = figure
+        if isinstance(figure, Triangle):
+            d1 = figure.vertex1.distance(Point(x, y))
+            d2 = figure.vertex2.distance(Point(x, y))
+            d3 = figure.vertex3.distance(Point(x, y))
+            if d1 <= d2 and d1 <= d3:
+                cls.n_vertex_modification = 1
+            elif d2 <= d3:
+                cls.n_vertex_modification = 2
+            else:
+                cls.n_vertex_modification = 3
 
     @classmethod
     def stop_modification(cls):
         cls.modified_figure = None
+        cls.n_vertex_modification = 0
 
     @classmethod
     def set_menu_figure(cls, figure):
