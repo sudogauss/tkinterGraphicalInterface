@@ -84,8 +84,8 @@ class FigureMenu:
             math_x = x - X_OFFSET
             math_y = Y_OFFSET - y
             self.coors.set("center x: " + str(math_x) + ",y: " + str(math_y) + ";r= " + str(r))
-            p = 2 * math.pi * r
-            s = math.pi * r * r
+            p = round(2 * math.pi * r, 2)
+            s = round(math.pi * r * r, 2)
             self.label_r.pack()
             self.entry_r.pack()
             self.change_position_button.pack(pady=4)
@@ -118,10 +118,10 @@ class FigureMenu:
             self.entry_y3.pack()
 
             self.change_button.pack(pady=4)
-            p = FigureManager.menu_figure.vertex1.distance(FigureManager.menu_figure.vertex2) + \
+            p = round(FigureManager.menu_figure.vertex1.distance(FigureManager.menu_figure.vertex2) + \
                 FigureManager.menu_figure.vertex1.distance(FigureManager.menu_figure.vertex3) + \
-                FigureManager.menu_figure.vertex2.distance(FigureManager.menu_figure.vertex3)
-            s = FigureManager.menu_figure.area()
+                FigureManager.menu_figure.vertex2.distance(FigureManager.menu_figure.vertex3), 2)
+            s = round(FigureManager.menu_figure.area(), 2)
             self.perimeter.set("perimeter: " + str(p))
             self.area.set("area: " + str(s))
             self.perimeter_label.pack(pady=4)

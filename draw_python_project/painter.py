@@ -1,6 +1,7 @@
 from tkinter import *
 from utils.consts import *
 from managers.figure_manager import FigureManager
+from managers.style_manager import StyleManager
 
 
 class Painter:
@@ -26,14 +27,18 @@ class Painter:
 
     def draw_point(self, point, r):
         center_x, center_y = point.get_coordinates()
-        canvas_point = self.canvas.create_oval(center_x - r, center_y - r, center_x + r, center_y + r, fill="red")
+        canvas_point = self.canvas.create_oval(center_x - r, center_y - r, center_x + r, center_y + r,
+                                               fill=StyleManager.get_fill_color(),
+                                               outline=StyleManager.get_outline_color())
         FigureManager.add_figure(point)
         point.set_canvas_object(canvas_point)
 
     def draw_circle(self, circle):
         center_x, center_y = circle.get_center()
         r = circle.get_radius()
-        canvas_circle = self.canvas.create_oval(center_x - r, center_y - r, center_x + r, center_y + r, fill="blue")
+        canvas_circle = self.canvas.create_oval(center_x - r, center_y - r, center_x + r, center_y + r,
+                                                fill=StyleManager.get_fill_color(),
+                                                outline=StyleManager.get_outline_color())
         FigureManager.add_figure(circle)
         circle.set_canvas_object(canvas_circle)
 
@@ -41,7 +46,9 @@ class Painter:
         x1, y1 = triangle.vertex1.x, triangle.vertex1.y
         x2, y2 = triangle.vertex2.x, triangle.vertex2.y
         x3, y3 = triangle.vertex3.x, triangle.vertex3.y
-        canvas_triangle = self.canvas.create_polygon([x1, y1, x2, y2, x3, y3], fill="black")
+        canvas_triangle = self.canvas.create_polygon([x1, y1, x2, y2, x3, y3],
+                                                     fill=StyleManager.get_fill_color(),
+                                                     outline=StyleManager.get_outline_color())
         FigureManager.add_figure(triangle)
         triangle.set_canvas_object(canvas_triangle)
 
