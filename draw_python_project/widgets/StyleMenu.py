@@ -27,7 +27,7 @@ class StyleMenu:
             "purple"
         ])
         self.fill_colors.current(1)
-        
+
         self.outline_colors = ttk.Combobox(self.frame, values=[
             "red",
             "green",
@@ -40,6 +40,9 @@ class StyleMenu:
         ])
         self.outline_colors.current(1)
 
+        self.header = Label(self.frame, text="Styles", font=("Arial", 25))
+
+        self.header.pack()
         self.fill_label.pack()
         self.fill_colors.pack(pady=5)
         self.outline_label.pack()

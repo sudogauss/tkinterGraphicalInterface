@@ -5,8 +5,10 @@ from listeners.interface_listeners.interface_listener_manager import InterfaceLi
 from widgets.ProgramMenu import ProgramMenu
 from widgets.StyleMenu import StyleMenu
 from widgets.FigureMenu import FigureMenu
+from widgets.DistanceMenu import DistanceMenu
 from utils.consts import WIDTH, HEIGHT
 from managers.style_manager import StyleManager
+from managers.distance_manager import DistanceManager
 
 
 class GUI(Tk):
@@ -37,4 +39,8 @@ class GUI(Tk):
     def create_figure_menu(self):
         figure_menu = FigureMenu(self)
         DrawListenersManager.set_figure_menu(figure_menu)
+
+    def create_distance_menu(self):
+        distance_menu = DistanceMenu(self)
+        DistanceManager.set_distance_menu(distance_menu)
 

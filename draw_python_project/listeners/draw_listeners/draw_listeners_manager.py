@@ -1,6 +1,7 @@
 from listeners.draw_listeners.point_intercat_handlers import PointInteractHandlers
 from listeners.draw_listeners.circle_interact_handlers import CircleInteractHandlers
 from listeners.draw_listeners.triangle_interact_handlers import TriangleInteractHandlers
+from managers.distance_manager import DistanceManager
 from managers.figure_manager import FigureManager
 from figures.Point import Point
 from figures.Circle import Circle
@@ -49,7 +50,11 @@ class DrawListenersManager:
 
     def delete_handler(self, event):
         x, y = event.x, event.y
-        self.painter.remove(x, y)
+        if self.shift_pressed:
+            DistanceManager.set_point(Point(x, y))
+            DistanceManager.set_distance()
+        else:
+            self.painter.remove(x, y)
 
     def drag_handler(self, event):
         if self.shift_pressed:

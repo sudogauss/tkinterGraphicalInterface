@@ -29,7 +29,7 @@ class FigureMenu:
         self.name.set("Figure")
         self.coors.set("x: 0, y: 0")
 
-        self.label_name = Label(self.frame, textvariable=self.name)
+        self.label_name = Label(self.frame, textvariable=self.name, font=("Arial", 25))
         self.label_coors = Label(self.frame, textvariable=self.coors)
         self.label_x = Label(self.frame, text="x1")
         self.label_y = Label(self.frame, text="y1")
