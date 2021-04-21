@@ -1,4 +1,5 @@
 from tkinter import *
+from utils.consts import X_OFFSET, Y_OFFSET
 
 
 class StyleMenu:
@@ -15,7 +16,7 @@ class StyleMenu:
         self.label_coors.pack(padx=10, pady=10)
 
     def set_coors(self, x, y):
-        math_x = x - 400.0
-        math_y = 350.0 - y
+        math_x = x - X_OFFSET
+        math_y = Y_OFFSET - y
         coors = "x: " + str(math_x) + ", y: " + str(math_y)
         self.var_coors.set(coors)

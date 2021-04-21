@@ -1,5 +1,5 @@
 from tkinter import *
-from figures.Point import Point
+from utils.consts import *
 from managers.figure_manager import FigureManager
 
 
@@ -13,16 +13,16 @@ class Painter:
 
     def create_coordinate_system(self):
 
-        for i in range(0, 800, 10):
-            self.canvas.create_line(i, 0, i, 700, width=0.2)
+        for i in range(0, WIDTH, COORS_STEP):
+            self.canvas.create_line(i, 0, i, HEIGHT, width=0.2)
 
-        for i in range(0, 700, 10):
-            self.canvas.create_line(0, i, 800, i, width=0.2)
+        for i in range(0, HEIGHT, COORS_STEP):
+            self.canvas.create_line(0, i, WIDTH, i, width=0.2)
 
         self.canvas.pack(side=LEFT)
 
-        self.canvas.create_line(400, 700, 400, 0, width=2, arrow=LAST)
-        self.canvas.create_line(0, 350, 800, 350, width=2, arrow=LAST)
+        self.canvas.create_line(X_OFFSET, HEIGHT, X_OFFSET, 0, width=2, arrow=LAST)
+        self.canvas.create_line(0, Y_OFFSET, WIDTH, Y_OFFSET, width=2, arrow=LAST)
 
     def draw_point(self, point, r):
         center_x, center_y = point.get_coordinates()
@@ -47,7 +47,7 @@ class Painter:
 
     def remove(self, x, y):
         figure_id = self.canvas.find_closest(x, y)
-        if figure_id[0] > 152:
+        if figure_id[0] > ID_OFFSET:
             if FigureManager.remove_figure(figure_id[0], x, y):
                 self.canvas.delete(figure_id[0])
 

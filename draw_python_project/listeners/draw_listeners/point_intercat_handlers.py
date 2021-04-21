@@ -1,5 +1,6 @@
 from figures.Point import Point
 from managers.figure_manager import FigureManager
+from utils.consts import POINT_SIZE
 
 
 class PointInteractHandlers:
@@ -11,4 +12,4 @@ class PointInteractHandlers:
         if FigureManager.get_figure() == "point":
             point = Point(x, y)
             FigureManager.set_menu_figure(point)
-            self.painter.draw_point(point, 2)
+            self.painter.draw_point(point, POINT_SIZE)

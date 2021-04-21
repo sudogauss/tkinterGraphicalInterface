@@ -1,12 +1,13 @@
 from figures.Point import Point
 from figures.Triangle import Triangle
+from utils.consts import ID_OFFSET
 
 
 class FigureManager:
 
     figure = "point"
     figures = []
-    index = 153
+    index = ID_OFFSET + 1
     moving_figure = None
     modified_figure = None
     menu_figure = None
@@ -37,7 +38,7 @@ class FigureManager:
     def find_figure(cls, figure_id, x, y):
         figure = None
 
-        if figure_id <= 152:
+        if figure_id <= ID_OFFSET:
             return None
 
         for figure_id_figure_pair in cls.figures:

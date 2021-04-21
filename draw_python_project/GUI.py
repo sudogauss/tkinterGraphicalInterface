@@ -5,6 +5,7 @@ from listeners.interface_listeners.interface_listener_manager import InterfaceLi
 from widgets.ProgramMenu import ProgramMenu
 from widgets.StyleMenu import StyleMenu
 from widgets.FigureMenu import FigureMenu
+from utils.consts import WIDTH, HEIGHT
 
 
 class GUI(Tk):
@@ -14,7 +15,7 @@ class GUI(Tk):
         self.state('zoomed')
         self.title("WELCOME TO GUI")
         self.painter = Painter()
-        self.painter.set_canvas(Canvas(self, width=800, height=700, bg="white"))
+        self.painter.set_canvas(Canvas(self, width=WIDTH, height=HEIGHT, bg="white"))
         draw_listener_manager = DrawListenersManager()
         draw_listener_manager.set_painter(self.painter)
         draw_listener_manager.register_draw_listeners()

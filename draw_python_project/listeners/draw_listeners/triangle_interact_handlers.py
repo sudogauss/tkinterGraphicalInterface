@@ -1,5 +1,6 @@
 from figures.Triangle import Triangle
 from managers.figure_manager import FigureManager
+from utils.consts import TRIANGLE_START_SIZE
 
 
 class TriangleInteractHandlers:
@@ -9,7 +10,7 @@ class TriangleInteractHandlers:
 
     def create_triangle_handler(self, x, y):
         if FigureManager.get_figure() == "triangle":
-            r = 40
+            r = TRIANGLE_START_SIZE
             x1, y1 = x, y
             x2, y2 = x - r, y
             x3, y3 = x, y - r
