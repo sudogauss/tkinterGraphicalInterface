@@ -15,7 +15,7 @@ class GUI(Tk):
 
     def __init__(self):
         Tk.__init__(self)
-        self.state('zoomed')
+        self.state('normal')
         self.title("WELCOME TO GUI")
         self.painter = Painter()
         self.painter.set_canvas(Canvas(self, width=WIDTH, height=HEIGHT, bg="white"))
