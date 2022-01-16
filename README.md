@@ -1,6 +1,6 @@
 # L'interface graphique avec Tkinter
 
-> Début
+**N.B.** Vous devez installer Tkinter afin de pouvoir executer le logiciel
 
 ## Guide de l'utilisation de l'interface graphique
 
