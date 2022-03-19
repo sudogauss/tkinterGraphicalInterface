@@ -2,6 +2,13 @@
 
 **N.B.** Vous devez installer Tkinter afin de pouvoir executer le logiciel
 
+Run the following script:
+
+```bash
+    $ chmod u+x start.sh
+    $ ./start.sh
+```
+
 ## Guide de l'utilisation de l'interface graphique
 
 L'interface possède le menu, le canvas, où se passe la construction 
